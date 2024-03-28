@@ -22,7 +22,6 @@ export function upload(req, res) {
 function convertFile(filePath, res, format) {
     const outputPath = path.resolve(__dirname, '..', '..', 'converted', `output-${Date.now()}.${format}`);
     const ffmpegCommand = `ffmpeg -i ${filePath} ${outputPath}`;
-    console.log(ffmpegCommand);
     exec(ffmpegCommand, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error converting file: ${error.message}`);

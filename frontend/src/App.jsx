@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import loadingImage from "../public/22.gif";
 function App() {
   const [video, setVideo] = useState(null);
   const [format, setFormat] = useState("mp4");
@@ -20,7 +20,7 @@ function App() {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          responseType: "blob", // Set response type to blob
+          responseType: "blob",
         }
       );
 
@@ -71,7 +71,19 @@ function App() {
         className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-300"
         onClick={handleUpload}
       >
-        {loading ? "Converting" : "Convert"}
+        {loading ? (
+          <>
+            Converting{" "}
+            <img
+              src={loadingImage}
+              className="inline-block"
+              width={"40px"}
+              height={"40px"}
+            />
+          </>
+        ) : (
+          "Convert"
+        )}
       </button>
       {downloadLink && (
         <a href={downloadLink} className="bg-indigo" download>
