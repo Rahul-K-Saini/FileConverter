@@ -21,7 +21,7 @@ function Upload() {
 
     try {
       const response = await axios.post(
-        "https://d82c-14-139-231-11.ngrok-free.app",
+        "https://7e92-14-139-231-11.ngrok-free.app/upload",
         formData,
         {
           headers: {
