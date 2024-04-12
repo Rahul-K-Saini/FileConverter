@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Video, ImageSquare, X } from "@phosphor-icons/react";
 import loadingImage from "../assets/1.gif";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Upload() {
   const [file, setFile] = useState(null);
   const [format, setFormat] = useState("");
   const [downloadLink, setDownloadLink] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [converted, setConverted] = useState(false);
 
   const handleUpload = async () => {
     setLoading(true);
-    setError(null);
-
+    toast(null);
     const formData = new FormData();
     formData.append("file", file);
     formData.append("format", format);
@@ -42,10 +42,10 @@ function Upload() {
         setDownloadLink(downloadUrl);
         setConverted(true);
       } else {
-        setError("Invalid response content type");
+      toast.error("Something Went Wrong!");
       }
     } catch (error) {
-      setError("Error uploading file");
+      toast.error("Something Went Wrong!");
       console.log("Error uploading file:", error);
     } finally {
       setLoading(false);
@@ -57,12 +57,13 @@ function Upload() {
     setFormat("");
     setDownloadLink(null);
     setLoading(false);
-    setError(null);
+    toast.error(null);
     setConverted(false);
   };
 
   return (
     <div>
+      <ToastContainer/>
       {file === null ? (
         <div className="flex justify-center">
           <label
@@ -142,20 +143,17 @@ function Upload() {
                           <option value="mp4">MP4</option>
                           <option value="avi">AVI</option>
                         </>
-                      )  
-                      :file.type.split("/")[0] === "audio" ?(
-                      <>
-                         <option value="mp3">Mp3</option>
+                      ) : file.type.split("/")[0] === "audio" ? (
+                        <>
+                          <option value="mp3">Mp3</option>
                           <option value="flac">Flac</option>
                           <option value="m4a">M4a</option>
                           <option value="webm">Webm</option>
                           <option value="wav">WAV</option>
                           <option value="wma">WMA</option>
-                      </>
-                    )
-                      : (
+                        </>
+                      ) : (
                         <>
-
                           <option value="png">PNG</option>
                           <option value="jpeg">JPEG</option>
                           <option value="bmp">BMP</option>
@@ -165,9 +163,9 @@ function Upload() {
                     </select>
                   </div>
                 ) : (
-                   <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                      Converted
-              </span>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                    Converted
+                  </span>
                 )}
               </>
             )}
@@ -185,18 +183,18 @@ function Upload() {
                 )}
               </button>
 
-                <button
-                  className="text-gray-800 bg-gray-200 rounded border py-2 transition-colors duration-300"
-                  onClick={resetState}
-                >
-                  Convert Another File
-                </button>
-  
+              <button
+                className="text-gray-800 bg-gray-200 rounded border py-2 transition-colors duration-300"
+                onClick={resetState}
+              >
+                Convert Another File
+              </button>
             </div>
           ) : (
             <button
               className={`float-right ${
-                loading || format == "" ? "opacity-75 cursor-not-allowed":""}
+                loading || format == "" ? "opacity-75 cursor-not-allowed" : ""
+              }
                bg-blue-600 w-32 max-w-[150px] mt-5  text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300`}
               onClick={handleUpload}
               disabled={loading || format == ""}
