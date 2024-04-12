@@ -21,7 +21,7 @@ function Upload() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5567/upload",
+        "https://d82c-14-139-231-11.ngrok-free.app",
         formData,
         {
           headers: {
