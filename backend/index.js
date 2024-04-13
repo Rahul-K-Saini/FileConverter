@@ -11,7 +11,10 @@ process.loadEnvFile(); // haha new way to load env file no need to install doten
 const PORT = process.env.PORT;
 
 
-app.use(cors({origin:'http://localhost:5173',credentials:true}));
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://file-converter-kohl.vercel.app','https://file-converter-rks.vercel.app'],
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());

@@ -53,8 +53,8 @@ async function convertFile(filePath, res, format) {
         console.error(errorMessage);
         reject(errorMessage);
       } finally {
-        fs.unlink(filePath, (err) => err && console.log(`Error deleting uploaded file: ${err.message}`));
-        fs.unlink(outputPath, (err) => err && console.log(`Error deleting converted file: ${err.message}`));
+        fs.unlink(filePath, (err) =>  console.log(`Error deleting uploaded file: ${err.message}`));
+        fs.unlink(outputPath, (err) =>  console.log(`Error deleting converted file: ${err.message}`));
       }
     });
   });

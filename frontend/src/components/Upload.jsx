@@ -134,7 +134,9 @@ function Upload() {
                     <select
                       className="py-2 px-4 ml-2 border border-gray-300 rounded-md appearance-none"
                       value={format}
-                      onChange={(e) => setFormat(e.target.value)}
+                      onChange={(e) => {
+                        setFormat(e.target.value)
+                      }}
                     >
                       <option value="">Select format</option>
                       {file.type.split("/")[0] === "video" ? (
@@ -152,14 +154,14 @@ function Upload() {
                           <option value="wav">WAV</option>
                           <option value="wma">WMA</option>
                         </>
-                      ) : (
+                      ) : file.type.split("/")[0] === "audio" ? (
                         <>
                           <option value="png">PNG</option>
                           <option value="jpeg">JPEG</option>
                           <option value="bmp">BMP</option>
                           <option value="gif">GIF</option>
                         </>
-                      )}
+                      ):"     "}
                     </select>
                   </div>
                 ) : (
