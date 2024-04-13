@@ -21,7 +21,7 @@ function Upload() {
 
     try {
       const response = await axios.post(
-        "https://fileconverter-3d4w.onrender.com/upload",
+        "http://localhost:5567/upload",
         formData,
         {
           headers: {
@@ -142,8 +142,15 @@ function Upload() {
                       {file.type.split("/")[0] === "video" ? (
                         <>
                           <option value="mov">MOV</option>
-                          <option value="mp4">MP4</option>
+                          <option value="mp4">MP4</option> 
+                          <option value="webm">WEBM</option>
                           <option value="avi">AVI</option>
+                          <option value="mp3">MP3</option>
+                         
+                          
+                         
+                          
+                        
                         </>
                       ) : file.type.split("/")[0] === "audio" ? (
                         <>
@@ -160,6 +167,9 @@ function Upload() {
                           <option value="jpeg">JPEG</option>
                           <option value="bmp">BMP</option>
                           <option value="gif">GIF</option>
+                          <option value="tiff">TIFF</option>
+                          <option value="bmp">BMP</option>
+                
                         </>
                       ):"     "}
                     </select>

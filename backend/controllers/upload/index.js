@@ -67,8 +67,12 @@ function getFileType(format) {
         case "jpg":
         case "jpe":
             return 'image';
+            case "tiff":
+            return 'image';
         case "gif":
             return 'image';
+            case "raw":
+              return 'image';
         case "svg":
             return 'image';
         case "bmp":
@@ -89,9 +93,11 @@ function getFileType(format) {
             return 'audio';
         case "mp4":
             return 'video';
+        case "wmv":
+            return 'video';
         case "webm":
             return 'video';
-        case "ogg":
+        case "m4v":
             return 'video';
         case "avi":
             return 'video';
@@ -100,6 +106,8 @@ function getFileType(format) {
         case "mpeg":
         case "mpg":
         case "mpe":
+            return 'video';
+        case "flv":
             return 'video';
         default:
             return 'unknown';
