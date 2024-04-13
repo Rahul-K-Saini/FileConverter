@@ -154,7 +154,7 @@ function Upload() {
                           <option value="wav">WAV</option>
                           <option value="wma">WMA</option>
                         </>
-                      ) : file.type.split("/")[0] === "audio" ? (
+                      ) : file.type.split("/")[0] === "image" ? (
                         <>
                           <option value="png">PNG</option>
                           <option value="jpeg">JPEG</option>
