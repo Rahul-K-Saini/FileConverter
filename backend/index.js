@@ -12,7 +12,7 @@ const PORT = process.env.PORT;
 
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://file-converter-kohl.vercel.app','https://file-converter-rks.vercel.app'],
+    origin: ['http://localhost:5173', 'https://file-converter-kohl.vercel.app','https://file-converter-rks.vercel.app','*'],
     credentials: true
 }));
 app.use(express.json());
